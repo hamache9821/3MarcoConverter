@@ -1,12 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using DaretokuTools;
@@ -18,7 +12,6 @@ namespace _3MarcoConverter
 		private decimal count = 0;
 
 		private List<UnitDef> _UnitDef;
-
 
 		public Form1()
 		{
@@ -83,7 +76,7 @@ namespace _3MarcoConverter
 				var resut = toSecond(num_TargetD.Value, num_TargetH.Value, num_TargetM.Value, num_TargetS.Value) 
 						  / toSecond(num_3marcoD.Value, num_3marcoH.Value, num_3marcoM.Value, num_3marcoS.Value);
 
-				lbl_Result.Text = format(is3Marco() ? (resut * 3) : resut);
+				lbl_Result.Text = format(resut);
 			}
 			catch
 			{
@@ -115,17 +108,11 @@ namespace _3MarcoConverter
 				var resut = (count++) / toSecond(num_3marcoD.Value, num_3marcoH.Value, num_3marcoM.Value, num_3marcoS.Value);
 
 				setValue(label11, $"{toTimeSpan(count)}=");
-				setValue(label10, format(is3Marco() ? (resut * 3) : resut));
+				setValue(label10, format(resut));
 			}
 			catch
 			{
 			}
-		}
-
-		private UnitDef getUnitDef()
-		{
-			if (cmb_Unit.SelectedIndex < 0) return null;
-			return _UnitDef.Find(x => x.Name == cmb_Unit.Text);
 		}
 
 		private void setValue(Label c, string o)
