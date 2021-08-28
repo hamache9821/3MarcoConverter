@@ -56,6 +56,8 @@
 			this.label10 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.cmb_Unit = new System.Windows.Forms.ComboBox();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.num_3marcoS)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.num_3marcoM)).BeginInit();
@@ -68,6 +70,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.num_TargetH)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.groupBox3.SuspendLayout();
+			this.groupBox4.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -80,7 +83,7 @@
 			this.groupBox1.Controls.Add(this.num_3marcoM);
 			this.groupBox1.Controls.Add(this.num_3marcoD);
 			this.groupBox1.Controls.Add(this.num_3marcoH);
-			this.groupBox1.Location = new System.Drawing.Point(18, 16);
+			this.groupBox1.Location = new System.Drawing.Point(18, 85);
 			this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -195,12 +198,12 @@
 			this.groupBox2.Controls.Add(this.num_TargetM);
 			this.groupBox2.Controls.Add(this.num_TargetD);
 			this.groupBox2.Controls.Add(this.num_TargetH);
-			this.groupBox2.Location = new System.Drawing.Point(18, 101);
+			this.groupBox2.Location = new System.Drawing.Point(18, 170);
 			this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
 			this.groupBox2.Size = new System.Drawing.Size(369, 65);
-			this.groupBox2.TabIndex = 0;
+			this.groupBox2.TabIndex = 2;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Target =";
 			// 
@@ -293,10 +296,10 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(18, 204);
+			this.button1.Location = new System.Drawing.Point(18, 273);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(95, 36);
-			this.button1.TabIndex = 3;
+			this.button1.TabIndex = 5;
 			this.button1.Text = "変換！";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -305,7 +308,7 @@
 			// 
 			this.lbl_Result.AutoSize = true;
 			this.lbl_Result.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.lbl_Result.Location = new System.Drawing.Point(121, 192);
+			this.lbl_Result.Location = new System.Drawing.Point(121, 261);
 			this.lbl_Result.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lbl_Result.Name = "lbl_Result";
 			this.lbl_Result.Size = new System.Drawing.Size(0, 29);
@@ -313,7 +316,7 @@
 			// 
 			// numericUpDown1
 			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(76, 174);
+			this.numericUpDown1.Location = new System.Drawing.Point(76, 243);
 			this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
 			this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
@@ -322,7 +325,7 @@
             0});
 			this.numericUpDown1.Name = "numericUpDown1";
 			this.numericUpDown1.Size = new System.Drawing.Size(37, 23);
-			this.numericUpDown1.TabIndex = 2;
+			this.numericUpDown1.TabIndex = 4;
 			this.numericUpDown1.Value = new decimal(new int[] {
             2,
             0,
@@ -332,11 +335,11 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(16, 177);
+			this.label9.Location = new System.Drawing.Point(16, 246);
 			this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(56, 16);
-			this.label9.TabIndex = 1;
+			this.label9.TabIndex = 3;
 			this.label9.Text = "有効桁";
 			// 
 			// button2
@@ -344,7 +347,7 @@
 			this.button2.Location = new System.Drawing.Point(14, 22);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(96, 52);
-			this.button2.TabIndex = 3;
+			this.button2.TabIndex = 0;
 			this.button2.Text = "開始";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -376,18 +379,39 @@
 			this.groupBox3.Controls.Add(this.button2);
 			this.groupBox3.Controls.Add(this.label11);
 			this.groupBox3.Controls.Add(this.label10);
-			this.groupBox3.Location = new System.Drawing.Point(0, 259);
+			this.groupBox3.Location = new System.Drawing.Point(0, 328);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(415, 115);
-			this.groupBox3.TabIndex = 5;
+			this.groupBox3.TabIndex = 6;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "リアルタイム変換";
+			// 
+			// groupBox4
+			// 
+			this.groupBox4.Controls.Add(this.cmb_Unit);
+			this.groupBox4.Location = new System.Drawing.Point(19, 12);
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.Size = new System.Drawing.Size(368, 57);
+			this.groupBox4.TabIndex = 0;
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Text = "単位";
+			// 
+			// cmb_Unit
+			// 
+			this.cmb_Unit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmb_Unit.FormattingEnabled = true;
+			this.cmb_Unit.Location = new System.Drawing.Point(12, 22);
+			this.cmb_Unit.Name = "cmb_Unit";
+			this.cmb_Unit.Size = new System.Drawing.Size(239, 24);
+			this.cmb_Unit.TabIndex = 0;
+			this.cmb_Unit.SelectedIndexChanged += new System.EventHandler(this.cmb_Unit_SelectedIndexChanged);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(427, 383);
+			this.ClientSize = new System.Drawing.Size(427, 473);
+			this.Controls.Add(this.groupBox4);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.groupBox2);
@@ -419,6 +443,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
+			this.groupBox4.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -453,6 +478,8 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.ComboBox cmb_Unit;
 	}
 }
 
