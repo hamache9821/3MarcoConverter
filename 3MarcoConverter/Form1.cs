@@ -80,10 +80,10 @@ namespace _3MarcoConverter
 		{
 			try
 			{
-				var tmp = 3 / toSecond(num_3marcoD.Value, num_3marcoH.Value, num_3marcoM.Value, num_3marcoS.Value);
-				var resut = toSecond(num_TargetD.Value, num_TargetH.Value, num_TargetM.Value, num_TargetS.Value) * tmp;
+				var resut = toSecond(num_TargetD.Value, num_TargetH.Value, num_TargetM.Value, num_TargetS.Value) 
+						  / toSecond(num_3marcoD.Value, num_3marcoH.Value, num_3marcoM.Value, num_3marcoS.Value);
 
-				lbl_Result.Text = format(resut);
+				lbl_Result.Text = format(is3Marco() ? (resut * 3) : resut);
 			}
 			catch
 			{
@@ -112,15 +112,20 @@ namespace _3MarcoConverter
 		{
 			try
 			{
-				var tmp = 3 / toSecond(num_3marcoD.Value, num_3marcoH.Value, num_3marcoM.Value, num_3marcoS.Value);
-				var resut = (count++) * tmp;
+				var resut = (count++) / toSecond(num_3marcoD.Value, num_3marcoH.Value, num_3marcoM.Value, num_3marcoS.Value);
 
 				setValue(label11, $"{toTimeSpan(count)}=");
-				setValue(label10, format(resut));
+				setValue(label10, format(is3Marco() ? (resut * 3) : resut));
 			}
 			catch
 			{
 			}
+		}
+
+		private UnitDef getUnitDef()
+		{
+			if (cmb_Unit.SelectedIndex < 0) return null;
+			return _UnitDef.Find(x => x.Name == cmb_Unit.Text);
 		}
 
 		private void setValue(Label c, string o)
@@ -146,10 +151,22 @@ namespace _3MarcoConverter
 
 		private string format(decimal i)
 		{
-			if (cmb_Unit.Text == "3Marco") return (i.ToString("N10") == "1.5000000000") ? "半marco" : i.ToString($"N{numericUpDown1.Value}") + " Marco";
-			
-			return i.ToString($"N{numericUpDown1.Value}") + ' '+ cmb_Unit.Text;
+			var a = _UnitDef.Find(x => x.Name == cmb_Unit.Text);
+			var n = i * a.Multiplier;
+
+			if (is3Marco())
+			{
+				return (n.ToString("N10") == "1.5000000000") ? "半marco" : n.ToString($"N{numericUpDown1.Value}") + " Marco";
+			}
+			else
+			{
+				return n.ToString($"N{numericUpDown1.Value}") + ' ' + cmb_Unit.Text;
+			}
 		}
 
+		private bool is3Marco()
+		{
+			return (cmb_Unit.Text == "3Marco");
+		}
 	}
 }

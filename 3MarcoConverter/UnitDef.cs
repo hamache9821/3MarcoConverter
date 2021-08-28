@@ -34,6 +34,9 @@ namespace DaretokuTools
 			}
 		}
 
+		[JsonProperty("multiplier")]
+		public int Multiplier { get; set; }
+
 		public int Day { get { return _Day; } }
 		public int Hour { get { return _Hour; } }
 		public int Min { get { return _Min; } }
